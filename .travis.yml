@@ -3,6 +3,7 @@ env:
   global:
     - secure: "SnjFtdOawhmDS6l9Gr8ZK/KtXCc29Fy2r+qjihZV4gpJ3l92B2696iVne8dvboMpZHm1BoJVm4RxwEFur3qpPxS6cSdjFLI3j9haL64+e5SSrM+YhL31DOjXxiBQZmYaJTQ3+sY4dZawEZG+ZccO6dU5QVR/7sts/hbYR5EQLhiZqajh7U3JF71BLimMdp0t4uNXlgUU6eX7CJ8EY1LfW2537PsqMUnza5AzbIeQ2a8Li9XH1HxPHWSx+WG0dBP230IFIiZ15NncumkVgiu/Lzgra/ZucAdVLlkZgmkwHEF6DDpZ5sIHfnZg7wWrxJx+RnGV7XZBNZwk9vZf6fS3wy1pdWno371JowXnGqUKEpqZG6jNcJLl8qKFe/DVTd7Vvg6TUGGyzq9Q0ziAVEtIVge/mM0TCvse6bVVLHShsuqsncbCo9OheeJSYzWQqQGaUXKNnm9ObhDtO8B1siymFnq6qvOPyln6Nr5dkun2mOOErA9O1iNU3Qag1K0P9oKhsB+j0g3HCffCKt3/AfOBAWv2Fzw9w60BWkQ1G6e4vvZWcWEj2TKPF19VplQrjEYURa4yr9sftVdFZdPtIWDUrpYWXRnhTmYvMlW+daKuQPkYd6H3cPwYARPG5UFDr1Xl/9c38Pu6aQjT/VXQin3ubFdA8GJsAhLXkaEL4n+I5OI="
 before_install:
+  - curl https://api.github.com/repos/saucisse-royale/ccdille/releases
   - TAG=$(curl -s https://api.github.com/repos/saucisse-royale/ccdille/releases | grep tag_name | head -n 1 | cut -d '"' -f 4)
   - wget https://github.com/saucisse-royale/ccdille/releases/download/$TAG/ccdille_c_linux_64.rel.c
   - mv ccdille_c_linux_64.rel.c ç.bootstrap
