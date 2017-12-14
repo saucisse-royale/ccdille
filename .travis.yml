@@ -13,7 +13,7 @@ before_script:
   - ./ç.bootstrap traduire ç.h.fr
 script:
   - make bootstrap && make
-before_deploy:
+after_success:
   - git config --local user.name "delthas"
   - git config --local user.email "delthas@saucisseroyale.fr.cr"
   - git add ç.c
