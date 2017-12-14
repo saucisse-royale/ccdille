@@ -26,6 +26,7 @@ after_success:
   - git remote add origin-back https://${GITHUB_TOKEN}@github.com/saucisse-royale/ccdille.git > /dev/null 2>&1
   - git push --quiet origin-back 2> /dev/null
 before_deploy:
+  - mv ç.bootstrap ccdille_c_linux_64.rel.c
   - git checkout -qf $TRAVIS_COMMIT
   - git tag "$(date +'%Y%m%d%H%M%S')-$(git log --format=%h -1)"
 deploy:
