@@ -1,0 +1,33 @@
+language: c
+env:
+  global:
+    - secure: "SnjFtdOawhmDS6l9Gr8ZK/KtXCc29Fy2r+qjihZV4gpJ3l92B2696iVne8dvboMpZHm1BoJVm4RxwEFur3qpPxS6cSdjFLI3j9haL64+e5SSrM+YhL31DOjXxiBQZmYaJTQ3+sY4dZawEZG+ZccO6dU5QVR/7sts/hbYR5EQLhiZqajh7U3JF71BLimMdp0t4uNXlgUU6eX7CJ8EY1LfW2537PsqMUnza5AzbIeQ2a8Li9XH1HxPHWSx+WG0dBP230IFIiZ15NncumkVgiu/Lzgra/ZucAdVLlkZgmkwHEF6DDpZ5sIHfnZg7wWrxJx+RnGV7XZBNZwk9vZf6fS3wy1pdWno371JowXnGqUKEpqZG6jNcJLl8qKFe/DVTd7Vvg6TUGGyzq9Q0ziAVEtIVge/mM0TCvse6bVVLHShsuqsncbCo9OheeJSYzWQqQGaUXKNnm9ObhDtO8B1siymFnq6qvOPyln6Nr5dkun2mOOErA9O1iNU3Qag1K0P9oKhsB+j0g3HCffCKt3/AfOBAWv2Fzw9w60BWkQ1G6e4vvZWcWEj2TKPF19VplQrjEYURa4yr9sftVdFZdPtIWDUrpYWXRnhTmYvMlW+daKuQPkYd6H3cPwYARPG5UFDr1Xl/9c38Pu6aQjT/VXQin3ubFdA8GJsAhLXkaEL4n+I5OI="
+before_install:
+  - TAG=$(curl -s https://api.github.com/repos/saucisse-royale/ccdille/releases | grep tag_name | head -n 1 | cut -d '"' -f 4)
+  - wget https://github.com/saucisse-royale/ccdille/releases/download/$TAG/ccdille_c_linux_64.rel.c
+  - mv ccdille_c_linux_64.rel.c ç.bootstrap
+  - chmod +x ç.bootstrap
+install: true
+before_script:
+  - ./ç.bootstrap traduire ç.c.fr
+  - ./ç.bootstrap traduire ç.h.fr
+script:
+  - make bootstrap && make
+before_deploy:
+  - git config --local user.name "delthas"
+  - git config --local user.email "delthas@saucisseroyale.fr.cr"
+  - git add ç.c
+  - git add ç.h
+  - git commit -m "automatic ç.c and ç.h translation (travis build $TRAVIS_BUILD_NUMBER) [skip ci]"
+  - git tag "$(date +'%Y%m%d%H%M%S')-$(git log --format=%h -1)"
+  - git remote add origin-back https://${GITHUB_TOKEN}@github.com/saucisse-royale/ccdille.git > /dev/null 2>&1
+  - git push --quiet origin-back > /dev/null 2>&1
+deploy:
+  provider: releases
+  api_key:
+    secure: Va/6uDFEe6CycWR5RTlkTuxJJtFnGF/66BQYD953Rqcas/IH9UbphASBd51pKiRWsNSpBVTMV0YCWihGV1iUJRKcL3B3DM6TBrdMdHCIs0OASl61HQ3lIumvMZqs6wpzrndKbN7RrYvgj/qy28qhWLSavSghdUSz7U+eLq4HQ/niQ9M+QjSHF7NXDvNOA1Z2xYm9+RheC7dWhXaU8/WMdZP9qzGWAlDL2GFAcNFpASLfIxSL+PTdYOsUcEFFmLOOYagSUCHzuzfkfrpBtph3Wno7zvRBVbrxvTOJv0ZcQApEkq645/+xaz+fzlUdjkA7uIUFv9HOwXVf/N+dqkLxHGghnYx7NnZVkzMth6QVCVunpTtUL2kHnSWy9Wc9YbrysFwONZ15zibnKqrpb3PbqcGUWp+U/I3RBeLKqa5Z7jZ+Ud+tr1D8qnHpctGRH4AnpRMuoCAYgnxm4uWII/sWroH7yzSV7jb2Qs/frqeWt80xV4x0O1sHK0JLli+W+UTZvupEtx6vaHkYaFcGErLKtRhGYYuhqKJyHMfbi1oJVwHR5LrgDXWldZIQIgrJIOHElN4tqrfUy01Jhi5572qJxs/aNqgqKSJ3IkyWy5E8QirPLDJO2pRdX192OJG6O1IxkhdIarr+WZK/0+R+npPITFzYyqDIJEQW3lcAHLnwnYE=
+  file: ç
+  skip_cleanup: true
+  on:
+    repo: saucisse-royale/ccdille
+    tags: true

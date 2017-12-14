@@ -1,5 +1,5 @@
 CC ?= cc
-CFLAGS = -ansi -O2
+CFLAGS = -ansi -O2 -std=c99
 DBGFLAGS = -W -Wall -Werror -Wextra -Wno-unused-parameter -pedantic -pedantic-errors -g -ansi
 PREFIX = /usr/local
 
