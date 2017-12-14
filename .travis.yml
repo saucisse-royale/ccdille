@@ -17,7 +17,6 @@ script:
 after_success:
   - git config --local user.name "delthas"
   - git config --local user.email "delthas@saucisseroyale.fr.cr"
-  - git tag "$(date +'%Y%m%d%H%M%S')-$(git log --format=%h -1)"
   - git add ç.c
   - git add ç.h
   - git commit -m "automatic ç.c and ç.h translation (travis build ${TRAVIS_BUILD_NUMBER}) [skip ci]"
@@ -28,6 +27,8 @@ after_success:
   - git remote add origin-back https://${GITHUB_TOKEN}@github.com/saucisse-royale/ccdille.git > /dev/null 2>&1
   - git push --quiet origin-back 2> /dev/null
   - git checkout -qf $TRAVIS_COMMIT
+  - echo $TRAVIS_COMMIT
+  - git tag "$(date +'%Y%m%d%H%M%S')-$(git log --format=%h -1)"
 deploy:
   provider: releases
   api_key:
