@@ -32,6 +32,11 @@
 # Debug files
 *.dSYM/
 
+# ccdille specific files
+
+*.c
+*.h
+
 *.sortie
 
 ç

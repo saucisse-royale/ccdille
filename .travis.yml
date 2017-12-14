@@ -16,8 +16,8 @@ script:
 after_success:
   - git config --local user.name "delthas"
   - git config --local user.email "delthas@saucisseroyale.fr.cr"
-  - git add ç.c
-  - git add ç.h
+  - git add -f ç.c
+  - git add -f ç.h
   - git commit -m "automatic ç.c and ç.h translation (travis build ${TRAVIS_BUILD_NUMBER}) [skip ci]"
   - git branch translation-update
   - git checkout master
