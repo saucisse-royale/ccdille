@@ -1,4 +1,4 @@
-/* Ce fichier a été généré par ç, ne pas l'éditer */
+/* Ce fichier a été généré par ç, ne pas l'éditer! */
 
 #include "ç.h"
 

@@ -24,9 +24,10 @@ after_success:
   - git branch translation-update
   - git checkout master
   - git merge translation-update
+  - git branch -d translation-update
   - git remote add origin-back https://${GITHUB_TOKEN}@github.com/saucisse-royale/ccdille.git > /dev/null 2>&1
   - git push --quiet origin-back 2> /dev/null
-  - git -qf checkout $TRAVIS_COMMIT
+  - git checkout -qf $TRAVIS_COMMIT
 deploy:
   provider: releases
   api_key:
