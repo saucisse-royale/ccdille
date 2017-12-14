@@ -26,14 +26,15 @@ after_success:
   - git remote add origin-back https://${GITHUB_TOKEN}@github.com/saucisse-royale/ccdille.git > /dev/null 2>&1
   - git push --quiet origin-back 2> /dev/null
 before_deploy:
-  - mv ç.bootstrap ccdille_c_linux_64.rel.c
+  - mv ç ccdille_c_linux_64.rel.c
   - git checkout -qf $TRAVIS_COMMIT
   - git tag "$(date +'%Y%m%d%H%M%S')-$(git log --format=%h -1)"
 deploy:
   provider: releases
   api_key:
     secure: Va/6uDFEe6CycWR5RTlkTuxJJtFnGF/66BQYD953Rqcas/IH9UbphASBd51pKiRWsNSpBVTMV0YCWihGV1iUJRKcL3B3DM6TBrdMdHCIs0OASl61HQ3lIumvMZqs6wpzrndKbN7RrYvgj/qy28qhWLSavSghdUSz7U+eLq4HQ/niQ9M+QjSHF7NXDvNOA1Z2xYm9+RheC7dWhXaU8/WMdZP9qzGWAlDL2GFAcNFpASLfIxSL+PTdYOsUcEFFmLOOYagSUCHzuzfkfrpBtph3Wno7zvRBVbrxvTOJv0ZcQApEkq645/+xaz+fzlUdjkA7uIUFv9HOwXVf/N+dqkLxHGghnYx7NnZVkzMth6QVCVunpTtUL2kHnSWy9Wc9YbrysFwONZ15zibnKqrpb3PbqcGUWp+U/I3RBeLKqa5Z7jZ+Ud+tr1D8qnHpctGRH4AnpRMuoCAYgnxm4uWII/sWroH7yzSV7jb2Qs/frqeWt80xV4x0O1sHK0JLli+W+UTZvupEtx6vaHkYaFcGErLKtRhGYYuhqKJyHMfbi1oJVwHR5LrgDXWldZIQIgrJIOHElN4tqrfUy01Jhi5572qJxs/aNqgqKSJ3IkyWy5E8QirPLDJO2pRdX192OJG6O1IxkhdIarr+WZK/0+R+npPITFzYyqDIJEQW3lcAHLnwnYE=
-  file: ç
+  file: ccdille_c_linux_64.rel.c
+  name: Automatic Build @ $(date +'%Y-%m-%d %H:%M:%S')
   skip_cleanup: true
   on:
     repo: saucisse-royale/ccdille
