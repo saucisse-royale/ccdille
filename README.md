@@ -21,7 +21,7 @@ sources C.fr :
 make
 ```
 
-Pour produire une version de déboggage `ç.debug` :
+Pour produire une version de débogage `ç.debug` :
 ```shell
 make debug
 ```
