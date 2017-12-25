@@ -14,7 +14,7 @@ all: ç
 debug: ç.c ç.h
 	$(CC) $(DBGFLAGS) -o ç.debug ç.c
 bootstrap:
-	$(MAKE) -o ç.c -o ç.h
+	$(CC) $(CFLAGS) -o ç ç.c
 clean:
 	rm -rf ç ç.debug
 install: all
