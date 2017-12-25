@@ -34,9 +34,6 @@
 
 # ccdille specific files
 
-*.c
-*.h
-
 *.sortie
 
 ç

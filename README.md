@@ -1,7 +1,5 @@
 # ccdille
 
-The ç.c and ç.h files are now *automatically* translated from their .fr counterparts by Travis after each commit/push, there's no need to update them before pushing.
-
 Une version sava de frenchsyntaxe.h.
 
 C'est un précompilateur qui traduit le code en français vers du code en C.

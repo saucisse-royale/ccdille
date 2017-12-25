@@ -20,5 +20,8 @@ clean:
 install: all
 	mkdir -p $(DESTDIR)$(PREFIX)/bin
 	install -m 0755 ç $(DESTDIR)$(PREFIX)/bin
+check: all
+	./ç traduire -o - ç.c.fr | diff ç.c - || (echo "ç.c mismatch" & exit 1)
+	./ç traduire -o - ç.h.fr | diff ç.h - || (echo "ç.h mismatch" & exit 1)
 
-.PHONY: clean all debug bootstrap install
+.PHONY: clean all debug bootstrap install check
