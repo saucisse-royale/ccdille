@@ -236,7 +236,7 @@ structure mot_cle_francais mot_cles_ml[] = {
   {"essayer", "try"},
   {"type", "type"},
   {"valeur", "val"},
-  {"virtuel", "virtual"},
+  {"virtuelle", "virtual"},
   {"lorsque", "when"},
   {"tant que", "while"},
   {"à", "with"},
