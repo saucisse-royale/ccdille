@@ -6,7 +6,7 @@ before_install:
   - sudo apt-get install -y tar
 install: true
 script:
-  - make bootstrap && make clean && make && make check
+  - make bootstrap && make && make check
 before_deploy:
   - git config --local user.name "delthas"
   - git config --local user.email "delthas@saucisseroyale.fr.cr"
